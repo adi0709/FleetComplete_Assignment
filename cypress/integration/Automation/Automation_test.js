@@ -53,15 +53,13 @@ describe('Automation Task', function () {
         cy.get('.settings-list-container-body-header > .shared-loading-indicator').click()
 
         NewRole.AddRoleName('Test Role');
-        NewRole.UncheckMap();
-        NewRole.UncheckRulesBox();
+        NewRole.CheckAllAndSave();
 
-        //cy.get('.profile-circle').click({ force: true })
-        //cy.get('.footer > .btn-inline-block > .btn').click()
+        cy.wait(2000)
+        cy.url().should('eq','https://appshell.qa.fleetcomplete.dev/settings/roles')
 
-        
-
-
+        cy.get('.profile-circle').click({ force: true })
+        cy.get('.footer > .btn-inline-block > .btn').click()
 
     })
 
